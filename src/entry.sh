@@ -1,13 +1,20 @@
 #!/bin/bash 
 
-COUNTER=0
+[ -z ${REMAINING} ] && REMAINING=10
+[ -z ${SLEEP_TIME} ] && SLEEP_TIME=5
 
-while [ 1 ]; do
+ITERATIONS=${REMAINING}
 
-    echo Hello $COUNTER
+echo "Will run ${ITERATIONS} iterations"
 
-    sleep 5
+while [ ${REMAINING} -gt 0 ]; do
 
-    let COUNTER=COUNTER+1 
+    echo "There are ${REMAINING} remaining iterations"
+
+    sleep ${SLEEP_TIME}
+
+    let REMAINING=REMAINING-1
     
 done
+
+echo "Finished running ${ITERATIONS} iterations"
